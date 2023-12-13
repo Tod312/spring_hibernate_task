@@ -5,17 +5,21 @@ import hiber.model.Car;
 import hiber.model.User;
 import hiber.service.UserService;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.sql.DataSource;
+
 public class MainApp {
    public static void main(String[] args) throws SQLException {
       AnnotationConfigApplicationContext context = 
             new AnnotationConfigApplicationContext(AppConfig.class);
-
+      
       UserService userService = context.getBean(UserService.class);
       Car car = new Car(3221, "Jeep");
       Car car2 = new Car(4211, "Nissan");
@@ -35,7 +39,6 @@ public class MainApp {
       userService.add(user4);
       
       
-      
       List<User> users = userService.listUsers();
       for (User user : users) {
          System.out.println("Id = "+user.getId());
@@ -44,11 +47,10 @@ public class MainApp {
          System.out.println("Email = "+user.getEmail());
          System.out.println();
       }
-      
-     System.out.println(userService.findByCar(4211));
 
+      User userr = userService.findByCar(4211);
+      System.out.println(userr); 
       
-
       context.close();
    }
 }

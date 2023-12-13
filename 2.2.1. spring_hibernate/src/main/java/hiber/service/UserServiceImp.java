@@ -30,8 +30,7 @@ public class UserServiceImp implements UserService {
    	@Transactional
 	@Override
 	public void add(Car car) {
-		userDao.add(car);
-		
+		userDao.add(car);	
 	}
 
    	@Transactional(readOnly = true)
@@ -39,6 +38,6 @@ public class UserServiceImp implements UserService {
 	public User findByCar(int series) {
 		return userDao.findByCar(series);
 	}
-   
+
   
 }
