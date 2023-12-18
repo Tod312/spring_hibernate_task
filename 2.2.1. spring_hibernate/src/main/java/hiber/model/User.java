@@ -2,6 +2,7 @@ package hiber.model;
 
 import javax.persistence.*;
 
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -71,7 +72,7 @@ public class User {
 
 	public void setCar(Car car) {
 		this.car = car;
-		car.setUser(this);
+//		car.setUser(this);
 	}
 
 	@Override
